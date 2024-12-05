@@ -111,3 +111,40 @@ class ReaderBrief:
 
     def __str__(self):
         return f"Name: {self._name}, Phone: {self._phone}"
+
+# Пример использования классов:
+
+# Данные для книги (в виде словаря)
+book_data = {
+    "book_id": 1,
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949,
+    "isbn": "9780451524935",
+    "genre": "Dystopian"
+}
+
+# Данные для читателя (в виде словаря)
+reader_data = {
+    "reader_id": 1,
+    "name": "John Doe",
+    "address": "123 Main St",
+    "phone": "+1234567890"
+}
+
+# Создание книги
+book1 = Book(**book_data)
+print(book1.full_version())
+print(book1.brief_version())
+
+# Создание читателя
+reader1 = Reader(**reader_data)
+print(reader1)
+
+# Создание записи о выдаче
+borrow1 = Borrow(borrow_id=1, book_data=book_data, reader_data=reader_data, date_borrowed="2024-12-05", date_returned="2024-12-19")
+print(borrow1)
+
+# Создание краткой версии данных читателя
+reader_brief = ReaderBrief(reader1)
+print(reader_brief)
