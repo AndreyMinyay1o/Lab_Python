@@ -54,7 +54,7 @@ class Book:
     def __str__(self):
         return f"Book(ID: {self._book_id}, Title: {self._title}, Author: {self._author}, Year: {self._year}, ISBN: {self._isbn}, Genre: {self._genre})"
 
-# Класс Reader (Читатель)
+# Перегрузка конструктора для обработки JSON или строки
 class Reader:
     def __init__(self, reader_id=None, name=None, address=None, phone=None, data=None):
         if data:
@@ -65,6 +65,15 @@ class Reader:
             self._address = address
             self._phone = phone
             self._validate_fields()
+
+    def _from_json(self, data):
+        data = json.loads(data)
+        self._reader_id = data["reader_id"]
+        self._name = data["name"]
+        self._address = data["address"]
+        self._phone = data["phone"]
+        self._validate_fields()
+
 
     def _validate_field(self, value, expected_type, error_message, min_length=None):
         """Универсальный метод для валидации полей"""
