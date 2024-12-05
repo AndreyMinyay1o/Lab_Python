@@ -122,3 +122,10 @@ class Borrow(Book, Reader):
     def __str__(self):
         return f"Borrow(ID: {self._borrow_id}, Book: {self._book_id}, Reader: {self._reader_id}, Date Borrowed: {self._date_borrowed}, Date Returned: {self._date_returned})"
 
+class ReaderBrief:
+    def __init__(self, reader):
+        self._name = reader._name
+        self._phone = reader._phone
+
+    def __str__(self):
+        return f"Name: {self._name}, Phone: {self._phone}"
