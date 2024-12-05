@@ -46,13 +46,15 @@ class Book:
         self._validate_isbn(self._isbn)
 
     def brief_version(self):
-        return f"{self._title} by {self._author}, {self._year}"
+        return f"Reader: {self._name} ({self._reader_id})"
 
     def full_version(self):
         return str(self)
 
-    def __str__(self):
-        return f"Book(ID: {self._book_id}, Title: {self._title}, Author: {self._author}, Year: {self._year}, ISBN: {self._isbn}, Genre: {self._genre})"
+    def __eq__(self, other):
+        if isinstance(other, Reader):
+            return self._reader_id == other._reader_id
+        return False
 
 # Перегрузка конструктора для обработки JSON или строки
 class Reader:
